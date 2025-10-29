@@ -65,7 +65,8 @@ function SignUp() {
                 if (result.success == true) {
                     const token = result.token
                     localStorage.setItem('token', token)
-                    window.location.href='/home'
+                   
+                    navigate('/home')
 
                     
                 } else {
