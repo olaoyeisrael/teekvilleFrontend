@@ -1,0 +1,84 @@
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-lists/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-schedule/styles/material.css";
+
+@import "tailwindcss";
+
+
+
+
+
+@font-face {
+  font-family: RobotoBlack;
+  src: url('../src/assets/fonts/Roboto-Black.ttf');
+}
+@font-face {
+  font-family: Roboto;
+  src: url('../src/assets/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: PoppinsSemiBold;
+  src: url('../src/assets/fonts/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: PoppinsMedium;
+  src: url('../src/assets/fonts/Poppins-Medium.ttf');
+}
+@font-face {
+  font-family: Oxygen;
+  src: url('../src/assets/fonts/Oxygen-Regular.ttf');
+}
+
+@font-face {
+  font-family: OxygenBold;
+  src: url('../src/assets/fonts/Oxygen-Bold.ttf');
+}
+@font-face {
+  font-family: InterSemiBold;
+  src: url('../src/assets/fonts/Inter_18pt-SemiBold.ttf');
+}
+@font-face {
+  font-family: Inter;
+  src: url('../src/assets/fonts/Inter_18pt-Regular.ttf');
+}
+@font-face {
+  font-family: InterBold;
+  src: url('../src/assets/fonts/Inter_18pt-Bold.ttf');
+}
+@font-face {
+  font-family: Poppins;
+  src: url('../src/assets/fonts/Poppins-Regular.ttf');
+}
+@font-face {
+  font-family: InterMedium;
+  src: url('../src/assets/fonts/Inter_18pt-Medium.ttf');
+}
+
+
+/* 645D5D */
+
+@theme{
+  --font-RobotoBlack: RobotoBlack, 'sans-serif';  
+  --font-Roboto: Roboto, 'sans-serif';  
+  --font-PoppinsSemiBold: PoppinsSemiBold, 'sans-serif';  
+  --font-Oxygen: Oxygen, 'sans-serif'; 
+  --font-OxygenBold: OxygenBold, 'sans-serif'; 
+  --font-Poppins: Poppins, 'sans-serif'; 
+  
+  --font-PoppinsMedium: PoppinsMedium, 'sans-serif'; 
+  --font-InterSemiBold: InterSemiBold, 'sans-serif'; 
+  --font-Inter: Inter, 'sans-serif';
+  --font-InterMedium: InterMedium, 'sans-serif';
+  --font-InterBold: InterBold, 'sans-serif';
+};
+
+
+
