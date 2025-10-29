@@ -19,6 +19,7 @@ import Academics from './_root/welcome/Academics'
 import About from './_root/welcome/About'
 import { Testimonial } from './_root/welcome/Testimonial'
 import Contact from './_root/Contact'
+import Blog from './_root/welcome/Blog'
 
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route path='/academics' element={<Academics/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/Testimonial' element={<Testimonial/>}/>
+        <Route path='/blogpost' element={<Blog/>}/>
 
       </Route>
       <Route path='/contactus' element={<Contact/>}/>

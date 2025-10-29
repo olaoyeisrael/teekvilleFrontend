@@ -5,9 +5,11 @@ import x from '../assets/x.png'
 import fb from '../assets/facebook.png'
 import ig from '../assets/IG.png'
 
+
 function Footer() {
   return (
-    <footer className='pt-4 lg:pt-[25px] pb-3 lg:pb-6 bg-[#F7F8FA] lg:px-[111px]'>
+    // isMobile
+    <footer className='pt-4 lg:pt-[25px] pb-3 lg:pb-6 bg-[#F7F8FA] lg:px-[111px] bottom-0'>
         <div className='lg:hidden'>
         <img src= {FooterLogo}className='ml-[17px] w-[129px]'/>
         <div className='mx-5 mt-5'>
@@ -67,15 +69,16 @@ function Footer() {
 
 
 
+{/* desktop */}
 
 
 <div>
 
-        <div className='lg:grid grid-cols-2 gap-16 hidden '>
-            <img src={FooterLogo2} className='w-[91px] h-5'/>
-            <div className='grid grid-cols-4'>
-                <div className='flex flex-col'> 
-                    <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Company</a>
+        <div className='lg:grid grid-cols-5 gap- hidden '>
+            <img src={FooterLogo2} className='w-[91px] h-5 col-span-1'/>
+            <div className='grid grid-cols-4 col-span-4'>
+                <div className='flex flex-col gap-2'> 
+                    <a href="" className='text-[16px]/[24px] text-[#98A2B3] font-Inter mb-2'>Company</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>About</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Leadership</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Blog</a>
@@ -84,8 +87,8 @@ function Footer() {
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Community</a>
 
                 </div>
-                 <div className='flex flex-col'> 
-                    <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Product</a>
+                 <div className='flex flex-col gap-2'> 
+                    <a href="" className='text-[16px]/[24px] text-[#98A2B3] font-Inter mb-2'>Product</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Review</a>
                     <a href="" className='text-[16px]/[24px]  text-[#667185] font-Inter'>Features</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter '>Pricing</a>
@@ -94,8 +97,8 @@ function Footer() {
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Releases</a>
                     
                 </div>
-                 <div className='flex flex-col'> 
-                    <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Support</a>
+                 <div className='flex flex-col gap-2'> 
+                    <a href="" className='text-[16px]/[24px] text-[#98A2B3] font-Inter mb-2'>Support</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Help Center</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>FAQ</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Contact</a>
@@ -104,8 +107,8 @@ function Footer() {
                   
                     
                 </div>
-                <div className='flex flex-col'> 
-                    <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Social</a>
+                <div className='flex flex-col gap-2'> 
+                    <a href="" className='text-[16px]/[24px] text-[#98A2B3] font-Inter mb-2'>Social</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Instagram</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Twitter</a>
                     <a href="" className='text-[16px]/[24px] text-[#667185] font-Inter'>Facebook</a>
@@ -129,7 +132,7 @@ function Footer() {
                 <h1 className=' text-[#667185] text-[16px]/[24px] font-Inter' >Sitemap</h1>
             </div>
 
-            <h1 className=' text-[#667185] text-[16px]/[24px] font-Inter'>© 2024 Teekville. All rights reserved.</h1>
+            <h1 className=' text-[#98A2B3] text-[16px]/[24px] font-Inter'>© 2024 Teekville. All rights reserved.</h1>
 
             </div>
             </div>

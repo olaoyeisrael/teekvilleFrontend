@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 function Hero() {
   return (
     <>
-    <section className='pt-7 lg:pt-10 px-5 lg:px-28 bg-[#F7F8FA] flex flex-col lg:flex-row lg:gap-[50px] lg:justify-between lg:items-center block1'>
+    <section id='hero' className='pt-7 lg:pt-10 px-5 lg:px-28 bg-[#F7F8FA] flex flex-col lg:flex-row lg:gap-[50px] lg:justify-between lg:items-center'>
         <div>
             <h1 className='text-3xl font-RobotoBlack text-center lg:text-left lg:text-6xl lg:text-shadow-lg lg:font-OxygenBold'>Find a <span className='text-[#0F973D]'>community.</span> Take a <span className='text-[#EB5017]'>test.</span> Calculate <span className='text-[#0D5EBA]'>grade.</span></h1>
             <p className='text-center font-Roboto text-sm mt-3.5 text-[#59595A] lg:text-left'>Meet fellow scholars from around the globe. Join teams smart minds business experts. Meet fellow scholars from around the globe</p>

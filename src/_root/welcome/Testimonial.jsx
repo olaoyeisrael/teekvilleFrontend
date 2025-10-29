@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 export const Testimonial = () => {
   return (
-   <section>
+   <section id='hero'>
     <div style={{backgroundImage: `url(${backgroundImage})`}} className='py-14 lg:py-[128px] lg:px-[90px] object-contain'>
         <h1 className='font-InterBold text-2xl lg:text-[52px] mx-5 text-white'><span className='text-[#31619F] italic'>Community</span> strives here</h1>
     </div>

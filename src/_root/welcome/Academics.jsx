@@ -8,7 +8,7 @@ import image2 from '../../assets/Rectangle 831.png'
 import AcademicsComponent, { AcademicsReverseComponent } from '../../components/AcademicsComponent'
 const Academics = () => {
   return (
-    <section className='mb-[37px] lg:mb-0'>
+    <section id='hero' className='mb-[37px] lg:mb-0'>
         <div className='' style={{backgroundImage: `url(${bgImage})`, backgroundSize: 'cover'}}>
             <div className='py-[29px] px-5 lg:px-[86px] lg:pt-[115px] lg:pb-[95px]'>
                 <h1 className='font-InterBold text-white text-2xl lg:text-[52px]'>Elevate your <span className='text-[#FFC107]'>Academics️</span></h1>
