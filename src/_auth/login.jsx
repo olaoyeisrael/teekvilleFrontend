@@ -86,7 +86,7 @@ function Login() {
             // Save the token to local storage and redirect to home
             const token = result.token;
             localStorage.setItem('token', token);
-            redirect('/home')
+            navigate('/home')
             
            
             // Redirect to home page
