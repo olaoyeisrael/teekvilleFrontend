@@ -3,7 +3,7 @@ import FooterLogo from '../assets/FooterLogo.png'
 import FooterLogo2 from '../assets/FooterLogo2.png'
 import x from '../assets/x.png'
 import fb from '../assets/facebook.png'
-import ig from '../assets/ig.png'
+import ig from '../assets/IG.png'
 
 function Footer() {
   return (
