@@ -4,7 +4,7 @@ import Avatar from '../assets/Avatars.png'
 import aaalogo2 from '../assets/aaalogo2.png'
 import googleIcon from '../assets/GoogleIcon.png'
 import twitterIcon from '../assets/TwitterIcon.png'
-import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom'
+import { Link, Navigate, NavLink, redirect, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUser, updateUser, } from '../store/userActions'
 
@@ -86,7 +86,7 @@ function Login() {
             // Save the token to local storage and redirect to home
             const token = result.token;
             localStorage.setItem('token', token);
-            navigate('/home')
+            redirect('/home')
             
            
             // Redirect to home page
