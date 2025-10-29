@@ -15,7 +15,7 @@ import signout from '../assets/sign-out.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../store/userActions'
 import { use } from 'react'
-import PostModal from '../_root/postModal'
+import PostModal from '../_root/PostModal'
 import Modal from './Modal'
 
 
