@@ -14,6 +14,7 @@ function Login() {
     const dispatch = useDispatch();
     const firstName = useSelector((state)=> state.userDetails.firstName)
     
+  
 
 
 
@@ -27,7 +28,7 @@ function Login() {
         })
 
     }
-    useEffect(()=>{},[firstName])
+ 
    
     // const handleLoginw =()=>{
     //     fetch('http://localhost:3000/api/auth/login',{
@@ -55,6 +56,7 @@ function Login() {
     //         }
     //     )
     // }
+   
 
     const handleLogin = async () => {
     try {
@@ -86,6 +88,7 @@ function Login() {
             // Save the token to local storage and redirect to home
             const token = result.token;
             localStorage.setItem('token', token);
+            
             navigate('/home')
             
            
@@ -105,7 +108,7 @@ function Login() {
     <>
 
     {/* mobile view */}
-    <section className='px-5 lg:hidden'>
+    <div className='px-5 lg:hidden'>
     <img src={Logo} className='mt-[70px] w-[177px] h-[79px] flex mx-auto'/>
     <h1 className='font-PoppinsMedium text-center text-[16px]'>Login to your account</h1>
 
@@ -123,7 +126,7 @@ function Login() {
     <button className='mt-3.5 py-2.5 bg-[#1E5296] text-white   w-full rounded-lg' onClick={handleLogin}>Login</button>
 
     <NavLink to='/signup' className='mt-[11px] text-center font-Poppins text-[15px]'>Don’t have an account? <span className='text-[#1E5296]'>Sign up</span></NavLink>
-    </section>
+    </div>
 
 
     {/* laptop view */}
