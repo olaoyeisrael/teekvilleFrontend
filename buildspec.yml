@@ -5,9 +5,9 @@ phases:
     runtime-versions:
       nodejs: 22
 
-  commands:
-    - echo Installing dependencies...
-    - npm ci --legacy-peer-deps
+    commands:
+      - echo Installing dependencies...
+      - npm ci --legacy-peer-deps
 
   build:
     commands:
