@@ -6,30 +6,46 @@ import ruby from '../../assets/Ruby.png'
 import PostCard from '../../components/PostCard'
 import community1 from '../../assets/Community1.png'
 import radio1 from '../../assets/radio-button.png'
+import logo from '../../assets/Logo1.png'
+import avatar from '../../assets/Avatarsdash.png'
 
 
 const Community = () => {
   return (
-   <section className='grid grid-cols-4 gap-[25px] pr-[30px] '>
+   <section className='grid grid-cols-4 gap-x-[25px] md:pr-[30px] p-2  '>
+    <div className='col-span-4 flex justify-between mt-2.5 md:hidden'>
+          <h1 className='text-[#1E5296] font-OxygenBold text-2xl'>Community</h1>
+          <img src={avatar} alt="" className='w-7 h-7' />
+        </div>
 
     
-    <section className='pt-3 pl-6 col-span-4 xl:col-span-3 md:flex flex-1 overflow-y-scroll flex-col h-screen gap-6 '>
+    <section className='md:pt-3 md:pl-6 col-span-4 xl:col-span-3 md:flex flex-1 overflow-y-scroll flex-col h-screen gap-6 '>
         <div className='mt-5 hidden md:block'>
             <h1 className='font-OxygenBold text-[#1E5296] text-xl'>Man and Science</h1>
-            <div className='grid grid-cols-3 gap-1.5 max-w-[538px] mt-2'>
-                <div className='relativ flex '>
+            <div className='grid grid-cols-3 gap-[5px] max-w-[538px] mt-2'>
+        
+                
+
+              
+                <div className='relative flex '>
+                  <div className='absolute -top-2 -right-2 h-4 w-4 bg-[#F56630] rounded-full border-[1px] border-[#FFC107]' />
                     {/* <div className=' absolute flex justify-end'>
                         <img src={radio1} alt="" className='w-5 h-5' />
                     </div> */}
+                    
+
+                    
                     
                     <div className=' border-[0.5px] border-[#000080B2] rounded-[10px]'>
                         <img src={community1} alt="" className='rounded-t-[10px]' />
                         <h1 className='text-center mt-2.5 font-Oxygen mb-2.5'>Laughing in school</h1>
                     </div>
                 </div>
+              
 
-
-                <div className='relativ flex '>
+                <div>
+                <div className='relative flex '>
+                   <div className='absolute -top-2 -right-2 h-4 w-4 bg-[#658CC2] rounded-full border-[1px] border-[#FF6A61]' />
                     {/* <div className=' absolute flex justify-end'>
                         <img src={radio1} alt="" className='w-5 h-5' />
                     </div> */}
@@ -39,9 +55,11 @@ const Community = () => {
                         <h1 className='text-center mt-2.5 font-Oxygen mb-2.5'>The hut of intellectuals</h1>
                     </div>
                 </div>
+                </div>
 
 
-                <div className='relativ flex '>
+                <div className='relative flex '>
+                   <div className='absolute -top-2 -right-2 h-4 w-4 bg-[#FF0000] rounded-full border-[1px] border-[#FFC107]' />
                     {/* <div className=' absolute flex justify-end'>
                         <img src={radio1} alt="" className='w-5 h-5' />
                     </div> */}

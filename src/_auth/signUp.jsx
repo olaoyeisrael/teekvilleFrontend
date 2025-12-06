@@ -8,6 +8,9 @@ import Avatar from '../assets/Avatars.png'
 import aaalogo2 from '../assets/aaalogo2.png'
 import googleIcon from '../assets/GoogleIcon.png'
 import twitterIcon from '../assets/TwitterIcon.png'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { updateUser } from '../store/userActions'
 
 function SignUp() {
      const [credential, setCredential] = useState({
@@ -22,7 +25,11 @@ function SignUp() {
      })
 
       const [error, setError] = useState('');
+      const [loading, setLoading] = useState(false);
       const [success, setSuccess] = useState('');
+      const navigate = useNavigate();
+      const dispatch = useDispatch();
+    
         const handleChange = (e) =>{
             setCredential({
                 ...credential,
@@ -52,6 +59,7 @@ function SignUp() {
             setSuccess('Account created successfully!');
 
             try {
+                setLoading(true);
                 const response = await fetch('https://teekvillebackend.onrender.com/api/auth/register', {
                     method: 'POST',
                     headers: {
@@ -59,11 +67,21 @@ function SignUp() {
                     },
                     body: JSON.stringify(credential),
                 });
+                
 
                 const result = await response.json();
+                setLoading(false);
 
                 if (result.success == true) {
+
+                    dispatch(updateUser({
+                                    firstName: result.user.firstName, 
+                                    lastName: result.user.lastName,
+                                    email: result.user.email,
+                                    token: result.token
+                                }));
                     const token = result.token
+
                     localStorage.setItem('token', token)
                    
                     navigate('/home')
@@ -75,6 +93,7 @@ function SignUp() {
             } catch (error) {
                 console.error("Error:", error);
                 setError("An error occurred while signing up.");
+                setLoading(false);
             }
         
         }
@@ -82,6 +101,7 @@ function SignUp() {
     };
 
         console.log(credential)
+        
   return (
     <>
 
@@ -108,8 +128,9 @@ function SignUp() {
                         <label className='font-Poppins text-[#454F5B] text-[15px]'>School</label>
                         <select name='school' className='rounded-lg border-[1px] border-[#D0D5DD] py-[15px] px-4 w-full mt-1' onChange={handleChange}>
                             <option value="--">--</option>
-                            <option value="Engineering">Engineering</option>
-                            <option value="Law">Law</option>
+                            <option value="Unilag">Unilag</option>
+                            <option value="UI">University of Ibadan</option>
+                            <option value="Yabatech">Yabatech</option>
                         </select>
                     </div>
 
@@ -142,9 +163,22 @@ function SignUp() {
                     </div>
                     {/* Display Error Message */}
                     {error && <p className='text-red-500 mt-2'>{error}</p>}
+                    {loading ? (
+                            <div className="flex flex-col items-center py-6">
+                            <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-300 border-t-transparent mb-4"></div>
+                            <h1 className="text-lg font-OxygenBold text-gray-700">
+                                Warming things up...
+                            </h1>
+                            <p className="text-sm text-gray-500 mt-1 text-center">
+                                Our servers might be waking up. This usually takes just a moment.
+                            </p>
+                            </div>
+                                
+                            ) :
+ 
 
                     <button className='py-4 bg-[#1E5296] text-white rounded-[10px] col-span-3 font-PoppinsMedium text-[16px] mt-[21px]' onClick={handleSubmit}>Continue</button>
-
+                  }
                 </div>
 
     <h1 className='mt-[11px] text-center font-Poppins text-[15px] text-[#9FA3A8]'>Already have an account?  <span className='text-[#1E5296]'>Login</span></h1>
@@ -234,8 +268,22 @@ function SignUp() {
                         <input name='confirmPassword' type="password" className='rounded-md border-[1px] border-[#D0D5DD] py-[18px] px-4 w-full mt-1' onChange={handleChange} />
                     </div>
                     {error && <p className='text-red-500 mt-2'>{error}</p>}
-                    <button onClick={handleSubmit} className='py-4 bg-[#1E5296] text-white rounded-md col-span-2 font-OxygenBold text-[16px]'>Sign Up</button>
-
+                    {
+                            loading ? (
+                                <div className="flex flex-col items-center py-6">
+                                <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-300 border-t-transparent mb-4"></div>
+                                <h1 className="text-lg font-OxygenBold text-gray-700">
+                                    Warming things up...
+                                </h1>
+                                <p className="text-sm text-gray-500 mt-1 text-center">
+                                    Our servers might be waking up. This usually takes just a moment.
+                                </p>
+                                </div>
+                                    
+                                ) :
+                    
+                        <button onClick={handleSubmit} className='py-4 bg-[#1E5296] text-white rounded-md col-span-2 font-OxygenBold text-[16px]'>Sign Up</button>
+                    }
                 </div>
                 
 

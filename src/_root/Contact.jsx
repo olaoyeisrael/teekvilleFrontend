@@ -4,6 +4,8 @@ import bg from '../assets/contactbg.png'
 
 const Contact = () => {
   const [message, setMessage] = useState({})
+  const [error,setError] = useState('')
+  const [success, setSuccess] = useState('')
 
   const handleChange = (e) =>{
     setMessage({
@@ -13,6 +15,34 @@ const Contact = () => {
 
   }
   console.log(message)
+
+  const handleSend = async () =>{
+
+    try{
+
+      const res = await fetch('https://teekvillebackend.onrender.com/api/contactus', {
+      method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify(message)
+    })
+
+    const response = await res.json()
+    if (response.success === true) {
+      setSuccess('Message Sent Succcessfully')
+
+    }
+    else{
+      setError(response.message)
+    }
+    }
+    catch(error){
+      setError("Something went wrong. Please try again later.")
+    }
+    
+  }
 
   return (
     <main className=''>
@@ -45,7 +75,7 @@ const Contact = () => {
 
           <div className=''>
             <h1 className='font-Poppins text-[#454F5B] mb-[2px] text-[15px]'>Phone Number</h1>
-            <input type="text" name='phoneNumber' placeholder='90909783664' className='px-4 border-[1px] border-[#9FA3A8] rounded-lg py-3 w-full' onChange={handleChange} />
+            <input type="text" name='phone' placeholder='90909783664' className='px-4 border-[1px] border-[#9FA3A8] rounded-lg py-3 w-full' onChange={handleChange} />
           </div>
 
           <div className=''>
@@ -63,9 +93,16 @@ const Contact = () => {
           </div>
 
         </div>
+        {success&& (
+          <h1 className='text-green-500'>{success}</h1>
+        )}
+
+        {error&& (
+          <h1 className='text-red-400'>{error}</h1>
+        )}
 
 
-        <button className='mt-7 bg-[#1E5296] text-white w-full rounded-[10px] py-2.5 font-PoppinsMedium mb-6'>Send Message</button>
+        <button className='mt-7 bg-[#1E5296] text-white w-full rounded-[10px] py-2.5 font-PoppinsMedium mb-6' onClick={handleSend}>Send Message</button>
       </section>
 
 

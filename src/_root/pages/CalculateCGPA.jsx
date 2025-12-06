@@ -64,30 +64,71 @@ const CalculateCGPA = () => {
   useEffect(()=>{
     setCourses(sampleData)
   }, [])
+  const [cgpa, setCgpa] = useState(0)
+
+
+
+  const handleCalculate = () =>{
+    // Calculation logic here
+    let totalPoints = 0;
+    let totalUnits = 0;
+
+    courses.forEach(course => {
+      let gradePoint = 0;
+      switch(course.grade) {
+        case 'A':
+          gradePoint = 5;
+          break;
+        case 'B':
+          gradePoint = 4;
+          break;
+        case 'C':
+          gradePoint = 3;
+          break;
+        case 'D':
+          gradePoint = 2;
+          break;
+        case 'E':
+          gradePoint = 1;
+          break;
+        case 'F':
+          gradePoint = 0;
+          break;
+        default:
+          gradePoint = 0;
+      }
+      totalPoints += gradePoint * course.unit;
+      totalUnits += course.unit;
+    });
+
+    const cgpa = (totalPoints / totalUnits).toFixed(2);
+    alert(`Your CGPA is: ${cgpa}`);
+    setCgpa(cgpa)
+  }
 
  
   return (
-    <section>
-      <h1 className='mt-4 text-[#1E5296] text-lg font-OxygenBold'>Input your score to calculate your CGPA</h1>
-      <table className='min-w-full table-auto border-collapse bg-white shadow-md rounded-lg overflow-hidden mt-2 '>
+    <section className='p-4 w-fit h-screen'>
+      <h1 className='mt-4 text-[#1E5296] text-lg md:text-2xl font-OxygenBold'>Input your score to calculate your CGPA</h1>
+      <table className='max-w-full table-auto border-collapse bg-white shadow-md rounded-lg overflow-hidden mt-2 '>
         <thead>
           <tr>
-            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium'>Course Title</th>
-            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium'>Unit</th>
-            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium'>Course Code</th>
-            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium'>Grade</th>
-            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium'>Score</th>
+            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium text-[12px]  sm:text-xl'>Course Title</th>
+            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium text-[12px] sm:text-xl'>Unit</th>
+            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium text-[12px] hidden'>Course Code</th>
+            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium text-[12px] sm:text-xl'>Grade</th>
+            <th className='py-3 px-6 text-left bg-[#E2DFFA] text-[#344054] font-InterMedium text-[12px]  sm:text-xl'>Score</th>
           </tr>
         </thead>
         <tbody>
           {
             courses.map((course, index)=>(
               <tr key={index} className="border-b hover:bg-gray-50">
-                <td className='p-2'>{course.courseTitle}</td>
-                <td className='p-2 text-center'>{course.unit}</td>
-                <td className='p-2 text-center'>{course.courseCode}</td>
-                <td className='p-2 text-center'>{course.grade}</td>
-                <td className='p-2 text-center'>{course.score}</td>
+                <td className='p-2 text-[12px]  sm:text-xl '>{course.courseTitle}</td>
+                <td className='p-2 text-[12px] sm:text-xl text-center'>{course.unit}</td>
+                <td className='p-2 text-[12px] sm:text-xl text-center hidden'>{course.courseCode}</td>
+                <td className='p-2 text-[12px] sm:text-xl text-center'>{course.grade}</td>
+                <td className='p-2 text-[12px]  sm:text-xl text-center'>{course.score}</td>
 
               </tr>
               
@@ -97,9 +138,13 @@ const CalculateCGPA = () => {
         </tbody>
       </table>
 
-      <div className='mt-4 flex flex-row justify-between bg-[#FFFFFF] px-5 py-5'>
+      <div className='flex w-full justify-end mt-2'>
+        <button className='w- p-3 border border-[#a6a5af] rounded-xl hover:bg-[#a6a5af] hover:cursor-pointer hover:text-white text-lg ' onClick={handleCalculate}>Calculate</button>
+      </div>
+
+      <div className='mt-4 flex flex-row justify-between bg-[#FFFFFF] px-5 py-5 rounded-3xl shadow-md '>
         <h1 className='font-InterBold text-[#1E5296]'>Total Courses: 9</h1>
-        <h1 className='font-InterSemiBold text-[#1E5296]'>CGPA: 3.79</h1>
+        <h1 className='font-InterSemiBold text-[#1E5296]'>CGPA: {cgpa}</h1>
       </div>
     </section>
   )

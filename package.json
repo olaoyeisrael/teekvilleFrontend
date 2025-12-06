@@ -12,14 +12,17 @@
   "dependencies": {
     "@syncfusion/ej2-react-schedule": "^31.1.21",
     "@tailwindcss/vite": "^4.1.14",
+    "gsap": "^3.13.0",
+    "lottie-react": "^2.4.1",
     "persist": "^0.2.7",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.4",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
+    "split-type": "^0.3.4",
     "tailwindcss": "^4.1.14"
   },
   "devDependencies": {

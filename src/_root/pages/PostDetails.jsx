@@ -8,13 +8,12 @@ import ruby from '../../assets/Ruby.png'
 import PostCard from '../../components/PostCard'
 import { useSelector } from 'react-redux'
 import logo from '../../assets/Logo1.png'
+import PostDetailsCard from '../../components/PostDetailsCard'
 
 
+const PostDetails = () => {
 
-const Home = () => {
-  const firstName = useSelector((state)=>state.userDetails.firstName)
-  
-  return (
+    return (
 
 
 
@@ -28,7 +27,7 @@ const Home = () => {
     
     <section className='md:pt-3 md:pl-6  col-span-4 xl:col-span-3 flex flex-1 overflow-y-scroll flex-col h-screen gap-6   '>
   
-      <PostCard />
+     <PostDetailsCard/>
 
       
      
@@ -124,7 +123,8 @@ const Home = () => {
 
     // section for post
     
+  
   )
 }
 
-export default Home
+export default PostDetails

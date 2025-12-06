@@ -20,6 +20,12 @@ import About from './_root/welcome/About'
 import { Testimonial } from './_root/welcome/Testimonial'
 import Contact from './_root/Contact'
 import Blog from './_root/welcome/Blog'
+import Apttest from './_root/Apttest'
+import Profile from './_root/pages/Profile'
+import Help from './_root/pages/Help'
+import Invite from './_root/pages/Invite'
+import PostDetails from './_root/pages/PostDetails'
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 
@@ -51,6 +57,7 @@ function App() {
 
       </Route>
       <Route path='/contactus' element={<Contact/>}/>
+      <Route path='/apttest' element={<Apttest/>}/>
      
       
 
@@ -58,12 +65,19 @@ function App() {
       
      
 
-      <Route  element={ <RootLayout/>}>
-        <Route path='/home' element={token ? <Home/> : <Navigate to='/login'/>}/>
-        <Route path='/taketest' element={token ? <TakeTest/> : <Navigate to='/login'/>}/>
-        <Route path='/calculatecgpa' element={token ? <CalculateCGPA/> : <Navigate to='/login'/>}/>
-        <Route path='/community' element={ token ? <Community/> : <Navigate to='/login'/>}/>
-        <Route path='/Schedule' element={token ? <Schedule/> : <Navigate to='/login'/>}/>
+      <Route element={<ProtectedRoute/>}>
+      <Route path='/' element={ <RootLayout/>}>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/taketest' element={<TakeTest/>}/>
+        <Route path='/calculatecgpa' element={<CalculateCGPA/>}/>
+        <Route path='/community' element={<Community/> }/>
+        <Route path='/Schedule' element={<Schedule/>}/>
+        <Route path='/profile' element={<Profile/> }/>
+        <Route path='/help' element={<Help/> }/>
+        <Route path='/invite' element={ <Invite/> }/>
+        <Route path='/postDetails/:id' element={<PostDetails/>}/>
+
+      </Route>
 
       </Route>
     </Routes>

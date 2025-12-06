@@ -39,6 +39,12 @@ const SideBar = () => {
     { to:'', icon: pencil, label: 'Make a Post' },
 ]
 
+ const navDetails2 = [
+    { to: '/profile', icon: user, label: 'Profile Settings' },
+    { to: '/help', icon: headset, label: 'Help Center' },
+    { to: '/invite', icon: gift, label: 'Invite friends' },
+]
+
 
  
 
@@ -58,8 +64,8 @@ const handleLogout = () =>{
 }
 
   return (
-    <nav className='flex flex-col min-w-[200px] xl:min-w-[272px] bg-white pt-6' >
-        <img src={Logo} className='w-[200px] h-[50p]' />
+    <aside className='bg-white pt-6 h-full' >
+        <img src={Logo} className='hidden md:block w-[200px] h-[50p]' />
         <div className='px-2 mt-[18px]'>
             <div className='pb-4'>
                 {navDetails.map((item)=>(
@@ -72,7 +78,7 @@ const handleLogout = () =>{
                   setShowPostModal(true); // Show the modal
                 }
               }}
-                        className={({isActive})=>`py-3 px-4 flex flex-row items-center gap-3 transition-colors ${
+                        className={({isActive})=>`md:py-3 py-2 md:px-4 px-2 flex flex-row items-center md:gap-3 transition-colors ${
                             isActive
                             ? 'text-[#1E5296] font-OxygenBold bg-[#1E529626] border-[#1E5296] border-[1px] rounded-sm'
                             : 'text-gray-700 font-Oxygen hover:text-[#1E5296]'
@@ -80,7 +86,7 @@ const handleLogout = () =>{
                         >
                         
                             <img src={item.icon} className="w-5 h-5" alt="" />
-                            <h1 className="text-sm">{item.label}</h1>   
+                            <h1 className="text-sm hidden md:block">{item.label}</h1>   
                         </NavLink>
 
                     ))}
@@ -139,10 +145,32 @@ const handleLogout = () =>{
 
         <div className='mt-[186px]'>
             <div className='px-2 pb-3'>
-                <div className='py-3 px-4 flex flex-row items-center gap-3'>
+                {navDetails2.map((item)=>(
+                        <NavLink
+                        key={item.to}
+                        to={item.to}
+                        onClick={(e) => {
+                if (item.label === 'Make a Post') {
+                  e.preventDefault(); // Prevent the navigation
+                  setShowPostModal(true); // Show the modal
+                }
+              }}
+                        className={({isActive})=>`md:py-3 py-2 md:px-4 px-2  flex flex-row items-center md:gap-3 transition-colors ${
+                            isActive
+                            ? 'text-[#1E5296] font-OxygenBold bg-[#1E529626] border-[#1E5296] border-[1px] rounded-sm'
+                            : 'text-gray-700 font-Oxygen hover:text-[#1E5296]'
+                            }`}
+                        >
+                        
+                            <img src={item.icon} className="w-5 h-5" alt="" />
+                            <h1 className="text-sm hidden md:block">{item.label}</h1>   
+                        </NavLink>
+
+                    ))}
+                {/* <NavLink className='py-3 px-4 flex flex-row items-center gap-3'>
                     <img src={user} className='w-5 h-5'/> 
                     <h1 className='font-Oxygen text-sm'>Profile Settings</h1>
-                </div>
+                </NavLink>
                 <div className='py-3 px-4 flex flex-row items-center gap-3'>
                     <img src={headset} className='w-5 h-5'/> 
                     <h1 className='font-Oxygen text-sm'>Help Center</h1>
@@ -150,11 +178,16 @@ const handleLogout = () =>{
                 <div className='py-3 px-4 flex flex-row items-center gap-3'>
                     <img src={gift} className='w-5 h-5'/> 
                     <h1 className='font-Oxygen text-sm'>Invite friends</h1>
-                </div>
+                </div> */}
            
             </div>
+            <div className='md:hidden flex mx-auto justify-center'>
+                <button onClick={handleLogout} >
+                    <img src={signout} alt="" className='w-5 h-5' />
+                </button>
+            </div>
            
-            <div className='mt-[10px] py-2'>
+            <div className='mt-[10px] py-2 hidden md:block'>
                 <div className='py-3 px-4 flex xl:justify-between items-center flex-col xl:flex-row'>
                     <div className='flex flex-row gap-1  xl:gap-3'>
                         <img src={avatar} className='w-10 h-10' alt="" />
@@ -195,7 +228,7 @@ const handleLogout = () =>{
         
         
 
-    </nav>
+    </aside>
   )
 }
 

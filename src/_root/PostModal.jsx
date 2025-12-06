@@ -55,8 +55,8 @@ const PostModal = ({showModal, setShowModal, onClose}) => {
         
         }
   return (
-    <div  className='w-96' > 
-                <div className='mx-[34px] mb-4 flex flex-row items-center justify-between gap-[15px]'> 
+    <div  className='lg:max-w-[600px] max-w-[300px] container' > 
+                <div className='lg:px-[34px] mb-4 flex flex-row items-center justify-between gap-[15px]'> 
                     <img src={avatar} alt="" className='w-11 h-11'/>
                     <div>
                     <textarea name="body" onChange={handleChangeBody} id="" placeholder='Say something...' className='w-full p-1'></textarea>

@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import Logo from '../assets/Logo.png'
 import Avatar from '../assets/Avatars.png'
 import aaalogo2 from '../assets/aaalogo2.png'
 import googleIcon from '../assets/GoogleIcon.png'
 import twitterIcon from '../assets/TwitterIcon.png'
-import { Link, Navigate, NavLink, redirect, useNavigate } from 'react-router-dom'
+import { Link, Navigate, NavLink, redirect, useNavigate, } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUser, updateUser, } from '../store/userActions'
 
+import data from '../assets/Parrot.json'
+
 
 function Login() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const firstName = useSelector((state)=> state.userDetails.firstName)
+    const [loading, setLoading] = useState(false)
+  
+
     
+
+   
   
 
 
@@ -28,38 +35,17 @@ function Login() {
         })
 
     }
- 
-   
-    // const handleLoginw =()=>{
-    //     fetch('http://localhost:3000/api/auth/login',{
-    //         method: "POST",
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(credential)
-    //     }).then(response => response.json()).then(
-    //         result=>{
-    //             console.log(result)
-    //             if (result.success == true){
-    //                 dispatch(updateUser({
-    //                     firstName: result.token 
-    //                 }))
-
-    //                 const token = result.token
-    //                 localStorage.setItem('token', token)
-    //                 window.location.href='/home'
-    //                 console.log(result.user)
-    //             }
-    //             else{
-    //                 setError(result.message)
-    //             }
-    //         }
-    //     )
-    // }
    
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        if (!credential.email || !credential.password) {
+            setError('Both fields are required!');
+            return;
+        }
     try {
+        setLoading(true)
+    
         // Make the API request using fetch
         const response = await fetch('https://teekvillebackend.onrender.com/api/auth/login', {
             method: "POST",
@@ -72,8 +58,9 @@ function Login() {
 
         // Parse the response as JSON
         const result = await response.json();
+        console.log(result);
+
         
-        // console.log(result);
 
         if (result.success === true) {
             // Dispatch the action to update the Redux store
@@ -86,16 +73,22 @@ function Login() {
            
 
             // Save the token to local storage and redirect to home
-            const token = result.token;
-            localStorage.setItem('token', token);
-            
-            navigate('/home')
-            
-           
-            // Redirect to home page
+            localStorage.setItem('token', result.token);
+            setLoading(false);
+            navigate('/home');
 
-            console.log(result.user);
-            console.log('This is the firstname: ', firstName)
+
+
+
+
+            // const token = result.token;
+            // localStorage.setItem('token', token);
+          
+            
+             
+            // setLoading(false)
+            // navigate('/home')
+            
         } else {
             setError(result.message);  // Set error message if login fails
         }
@@ -108,7 +101,9 @@ function Login() {
     <>
 
     {/* mobile view */}
+    
     <div className='px-5 lg:hidden'>
+      
     <img src={Logo} className='mt-[70px] w-[177px] h-[79px] flex mx-auto'/>
     <h1 className='font-PoppinsMedium text-center text-[16px]'>Login to your account</h1>
 
@@ -123,7 +118,23 @@ function Login() {
     {error && <h1>{error}</h1>}
 
     <h1 className='mt-3.5 flex justify-end text-[#1E5296]'>Forget Password</h1>
-    <button className='mt-3.5 py-2.5 bg-[#1E5296] text-white   w-full rounded-lg' onClick={handleLogin}>Login</button>
+    {
+        loading ? (
+                <div className="flex flex-col items-center py-6">
+                <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-300 border-t-transparent mb-4"></div>
+                <h1 className="text-lg font-OxygenBold text-gray-700">
+                    Warming things up...
+                </h1>
+                <p className="text-sm text-gray-500 mt-1 text-center">
+                    Our servers might be waking up. This usually takes just a moment.
+                </p>
+                </div>
+                    
+                ) :
+   
+            <button className='mt-3.5 py-2.5 bg-[#1E5296] text-white   w-full rounded-lg' onClick={handleLogin}>Login</button>
+    }
+
 
     <NavLink to='/signup' className='mt-[11px] text-center font-Poppins text-[15px]'>Don’t have an account? <span className='text-[#1E5296]'>Sign up</span></NavLink>
     </div>
@@ -178,10 +189,24 @@ function Login() {
                     </div>
                 </div>
                     {error && <h1 className='text-red-500'>{error}</h1>}
-
+                
                 <div className='mt-8'>
-                   
-                    <button className='mt-3.5 py-4 bg-[#1E5296] text-white   w-full rounded-lg font-OxygenBold text-' onClick={handleLogin}>Login</button>
+                    {
+                        loading ? (
+                            <div className="flex flex-col items-center py-6">
+                            <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-300 border-t-transparent mb-4"></div>
+                            <h1 className="text-lg font-OxygenBold text-gray-700">
+                                Warming things up...
+                            </h1>
+                            <p className="text-sm text-gray-500 mt-1 text-center">
+                                Our servers might be waking up. This usually takes just a moment.
+                            </p>
+                            </div>
+                        
+                        ) :
+                        (<button className='mt-3.5 py-4 bg-[#1E5296] text-white   w-full rounded-lg font-OxygenBold text-' onClick={handleLogin}>Login</button>)
+                    }
+
                     <div className='flex flex-row mt-[26px] gap-1 justify-center'>
                         <p className='font-Oxygen text-sm text-[#645D5D] '> Forgot Password?</p>
                         <a href="" className='text-[#1E5296] font-OxygenBold text-sm'>Recover</a>
